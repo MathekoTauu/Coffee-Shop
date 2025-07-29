@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew Haven |Coffee Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<style>
+    :root {
+    --coffee-dark: #3E2723;       /* Dark coffee bean */
+    --coffee-medium: #6F4E37;     /* Medium roast */
+    --coffee-light: #C4A484;      /* Light cream */
+    --coffee-accent: #D4AF37;     /* Honey gold accent */
+    --coffee-contrast: #F8F5F0;   /* Creamy background */
+    --coffee-text: #2A2118;       /* Dark text for readability */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--coffee-contrast);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(248, 245, 240, 0.9), rgba(248, 245, 240, 0.9)), 
+                    url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(63, 39, 23, 0.1);
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid var(--coffee-light);
+}
+
+h1 {
+    color: var(--coffee-dark);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    position: relative;
+    font-weight: 700;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: var(--coffee-accent);
+    border-radius: 2px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+label {
+    color: var(--coffee-text);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: -1rem;
+    display: block;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    padding: 0.9rem 1rem;
+    border: 2px solid var(--coffee-light);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--coffee-text);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: var(--coffee-accent);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+input[type="submit"] {
+    background-color: var(--coffee-dark);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    margin-top: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--coffee-medium);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(63, 39, 23, 0.15);
+}
+
+p {
+    text-align: center;
+    color: var(--coffee-text);
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
+a {
+    color: var(--coffee-accent);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+a:hover {
+    color: var(--coffee-medium);
+    text-decoration: underline;
+}
+
+/* Coffee-themed decorative elements */
+.coffee-decoration {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    opacity: 0.1;
+    z-index: -1;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.decoration-1 {
+    top: 15%;
+    left: 15%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%233E2723" d="M50 10 Q70 30 50 50 Q30 70 50 90 Q70 70 50 50 Q30 30 50 10 Z"/></svg>');
+}
+
+.decoration-2 {
+    bottom: 15%;
+    right: 15%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle fill="%233E2723" cx="50" cy="50" r="40"/></svg>');
+    transform: rotate(15deg);
+}
+
+/* Coffee cup icon for submit button */
+.submit-wrapper {
+    position: relative;
+}
+
+.submit-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M18 6h-2V4h2v2zm0 4h-2V8h2v2zm0 4h-2v-2h2v2zm-4-8h-2V4h2v2zm0 4h-2V8h2v2zm0 4h-2v-2h2v2zm-4-8h-2V4h2v2zm0 4h-2V8h2v2zm0 4h-2v-2h2v2z"/></svg>');
+    background-size: contain;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 1.5rem;
+        padding: 2rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    body {
+        background-image: linear-gradient(rgba(248, 245, 240, 0.95), rgba(248, 245, 240, 0.95));
+    }
+}
+</style>
+<body>
+    <div class="industrial-decoration decoration-1"></div>
+    <div class="industrial-decoration decoration-2"></div>
+    
+    <div class="container">
+        <h1>Brew Haven Login</h1>
+        <form method="post" action="login.php">
+            <label for="username">Username:</label>
+            <input type="text" 
+                   id="username" 
+                   name="username" 
+                   placeholder="Enter your username" 
+                   required>
+
+            <label for="password">Password:</label>
+            <input type="password" 
+                   id="password" 
+                   name="password" 
+                   placeholder="Enter your password" 
+                   required>
+
+            <input type="submit" value="Login">
+        </form>
+        <p>Does not have an account?</p>
+        <a href="register.html">Create Industrial Account</a>
+    </div>
+</body>
+</html>
